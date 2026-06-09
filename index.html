@@ -1,676 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UX Portfolio — Maya Chen</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UX Portfolio — Lorraine Ngwenya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0A0A0F;
-    color: #E8E8F0;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #07070C;
+      color: #EDEDF5;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-  /* Sidebar Navigation */
-  .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 280px;
-    height: 100vh;
-    background: #0D0D12;
-    border-right: 1px solid #1E1E28;
-    padding: 48px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 100;
-  }
+    /* ----- elegant animated background (medium-loud, drifting orbs) ----- */
+    .bg-aura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.28;
+      animation: floatOrb 28s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, #6C63FF, #3020AA);
+      top: -20vh;
+      left: -10vw;
+      animation-duration: 32s;
+    }
+    .orb-2 {
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, #B77CFF, #4A3B8C);
+      bottom: -15vh;
+      right: -5vw;
+      animation-duration: 38s;
+      animation-delay: -6s;
+    }
+    .orb-3 {
+      width: 35vw;
+      height: 35vw;
+      background: radial-gradient(circle, #FF99CC20, #6C63FF20);
+      top: 40vh;
+      left: 30vw;
+      animation-duration: 42s;
+      animation-delay: -12s;
+    }
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      100% { transform: translate(4%, 6%) scale(1.08); opacity: 0.32; }
+    }
 
-  .logo h1 {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, #FFFFFF 0%, #A8A8C0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 8px;
-  }
+    /* subtle animated grain */
+    .grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(220,220,255,0.02) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: -1;
+      animation: grainShift 22s infinite linear;
+    }
+    @keyframes grainShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 28px 28px; }
+    }
 
-  .logo p {
-    font-size: 13px;
-    color: #5E5E72;
-    font-weight: 400;
-  }
+    /* cursor glow */
+    .cursor-glow {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(108,99,255,0.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease;
+      will-change: left, top;
+    }
 
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 60px;
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: #A8A8C0;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .nav-link:hover {
-    background: #1A1A24;
-    color: #FFFFFF;
-  }
-
-  .nav-link.active {
-    background: #1E1E2A;
-    border-left: 2px solid #6C63FF;
-  }
-
-  .nav-icon {
-    font-size: 18px;
-    width: 24px;
-  }
-
-  .sidebar-footer {
-    font-size: 12px;
-    color: #3E3E4A;
-    border-top: 1px solid #1E1E28;
-    padding-top: 24px;
-  }
-
-  /* Main Content */
-  .main {
-    margin-left: 280px;
-    min-height: 100vh;
-  }
-
-  /* Hero Section */
-  .hero {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    padding: 0 80px;
-    border-bottom: 1px solid #1E1E28;
-    background: linear-gradient(180deg, #0A0A0F 0%, #0F0F15 100%);
-  }
-
-  .hero-content {
-    max-width: 700px;
-  }
-
-  .hero-badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #6C63FF;
-    background: rgba(108, 99, 255, 0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-  }
-
-  .hero h1 {
-    font-size: 56px;
-    font-weight: 700;
-    letter-spacing: -2px;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #FFFFFF 0%, #C8C8E0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hero p {
-    font-size: 18px;
-    color: #8E8EA8;
-    line-height: 1.6;
-    margin-bottom: 32px;
-  }
-
-  /* Section Styles */
-  section {
-    padding: 80px;
-    border-bottom: 1px solid #1E1E28;
-  }
-
-  .section-header {
-    margin-bottom: 48px;
-  }
-
-  .section-label {
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #6C63FF;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-size: 40px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    color: #FFFFFF;
-  }
-
-  /* Projects Grid */
-  .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-
-  .project-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .project-image {
-  
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 16/10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-  }
-
-  .project-placeholder {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	object-position: center;
-	border-radius: 8px;
-  }
-
-  .project-info h3 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-    color: #FFFFFF;
-  }
-
-  .project-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-
-  .tag {
-    font-size: 12px;
-    padding: 4px 12px;
-    background: #1A1A24;
-    border-radius: 20px;
-    color: #A8A8C0;
-    border: 1px solid #2A2A36;
-  }
-
-  .project-info p {
-    color: #8E8EA8;
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #6C63FF;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    transition: gap 0.2s ease;
-    cursor: pointer;
-  }
-
-  .project-link:hover {
-    gap: 12px;
-  }
-
-  /* Case Study Sections */
-  .case-study {
-    padding: 0;
-  }
-
-  .case-hero {
-    padding: 60px 80px;
-    background: linear-gradient(135deg, #0F0F18 0%, #0A0A0F 100%);
-    border-bottom: 1px solid #1E1E28;
-  }
-
-  .case-hero h2 {
-    font-size: 40px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    margin: 16px 0;
-  }
-
-  .case-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 80px;
-  }
-
-  .case-block {
-    margin-bottom: 48px;
-  }
-
-  .case-block h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #6C63FF;
-  }
-
-  .case-block p {
-    color: #A8A8C0;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .case-image {
-    
-    border-radius: 12px;
-    aspect-ratio: 16/9;
-    margin: 40px 0;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .case-image img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-  }
-
-  /* Footer */
-  .footer {
-    padding: 60px 80px;
-    background: #0D0D12;
-    border-top: 1px solid #1E1E28;
-    text-align: center;
-  }
-
-  .footer p {
-    color: #5E5E72;
-    font-size: 14px;
-  }
-
-  /* Responsive */
-  @media (max-width: 1024px) {
+    /* sidebar */
     .sidebar {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: rgba(9, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      border-right: 0.5px solid rgba(108, 99, 255, 0.25);
+      padding: 48px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 100;
     }
-    .main {
-      margin-left: 0;
-    }
-    .hero {
-      padding: 60px 40px;
-    }
-    .hero h1 {
-      font-size: 42px;
-    }
-    section {
-      padding: 60px 40px;
-    }
-    .case-hero {
-      padding: 40px;
-    }
-    .case-content {
-      padding: 40px;
-    }
-    .project-item {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-  }
 
-  @media (max-width: 768px) {
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      background: linear-gradient(125deg, #FFFFFF, #C0C0E0, #A0A0FF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 6px;
+    }
+    .logo p {
+      font-size: 12px;
+      color: #6E6E88;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 70px;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      color: #AAAAc5;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: rgba(108, 99, 255, 0.1);
+      color: white;
+      transform: translateX(3px);
+    }
+    .nav-link.active {
+      background: rgba(108, 99, 255, 0.16);
+      border-left: 1.5px solid #6C63FF;
+    }
+
+    .main {
+      margin-left: 280px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* elegant marquee */
+    .marquee-wrap {
+      background: rgba(108, 99, 255, 0.04);
+      border-top: 0.5px solid rgba(108,99,255,0.2);
+      border-bottom: 0.5px solid rgba(108,99,255,0.2);
+      overflow: hidden;
+      padding: 12px 0;
+      backdrop-filter: blur(4px);
+    }
+    .marquee {
+      display: flex;
+      width: max-content;
+      animation: scrollMarquee 38s linear infinite;
+      gap: 48px;
+    }
+    .marquee span {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #C0BBFF;
+      white-space: nowrap;
+    }
+    .marquee .accent {
+      color: #6C63FF;
+      background: rgba(108,99,255,0.15);
+      padding: 3px 12px;
+      border-radius: 40px;
+      margin: 0 4px;
+    }
+    @keyframes scrollMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* hero */
+    .hero {
+      padding: 70px 8% 60px 8%;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
     .hero h1 {
-      font-size: 32px;
+      font-size: 64px;
+      font-weight: 600;
+      letter-spacing: -2px;
+      line-height: 1.08;
+      background: linear-gradient(135deg, #FFFFFF, #DDDDFF, #B0AAFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+      animation: fadeSlideUp 0.9s ease;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #BCBCCE;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .hero-stats {
+      background: rgba(15,15,25,0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 24px;
+      border: 0.5px solid rgba(108,99,255,0.2);
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.05);
+    }
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #9E9EC0;
+    }
+    .stat-number {
+      font-size: 22px;
+      font-weight: 600;
+      font-family: monospace;
+      color: #C2BBFF;
+    }
+
+    /* section styling */
+    section {
+      padding: 70px 8%;
+      border-top: 0.5px solid rgba(108,99,255,0.08);
+    }
+    .section-header {
+      margin-bottom: 56px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #7C76E0;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
     .section-title {
-      font-size: 28px;
+      font-size: 40px;
+      font-weight: 550;
+      letter-spacing: -1px;
+      color: white;
     }
-  }
 
-  html {
-    scroll-behavior: smooth;
-  }
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+    .project-card {
+      background: rgba(12,12,20,0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 0.5px solid rgba(108,99,255,0.2);
+      transition: all 0.35s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: #6C63FF80;
+      box-shadow: 0 20px 35px -14px rgba(108,99,255,0.2);
+    }
+    .project-img {
+      height: 210px;
+      overflow: hidden;
+    }
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.6s;
+	  background: #F5F5F5;
+    }
+    .project-card:hover .project-img img {
+      transform: scale(1.04);
+    }
+    .project-info {
+      padding: 24px;
+    }
+    .project-info h3 {
+      font-size: 24px;
+      font-weight: 550;
+      margin-bottom: 12px;
+    }
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    .tag {
+      font-size: 10px;
+      padding: 4px 12px;
+      background: rgba(108,99,255,0.12);
+      border-radius: 40px;
+    }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+    /* case study container */
+    .case-container {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .case-block {
+      background: rgba(8,8,16,0.5);
+      backdrop-filter: blur(2px);
+      border-radius: 36px;
+      padding: 44px 48px;
+      border: 0.5px solid rgba(108,99,255,0.12);
+      transition: all 0.3s;
+    }
+    .case-block:hover {
+      border-color: rgba(108,99,255,0.3);
+    }
+    .case-title {
+      font-size: 32px;
+      font-weight: 550;
+      margin-bottom: 8px;
+    }
+    .case-sub {
+      color: #8A85E6;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .case-double {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .case-col p {
+      color: #CACAE0;
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .ux-chip {
+      background: rgba(108,99,255,0.1);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 11px;
+      display: inline-block;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
 
-  ::-webkit-scrollbar-track {
-    background: #1A1A24;
-  }
+    /* teaser card */
+    .teaser-card {
+      margin-top: 36px;
+      background: linear-gradient(115deg, rgba(108,99,255,0.1), rgba(25,25,45,0.7));
+      border-radius: 28px;
+      padding: 0px 0px 0px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 0.5px solid rgba(108,99,255,0.4);
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .teaser-card:hover {
+      border-color: #6C63FF;
+      transform: scale(1.01);
+      background: linear-gradient(115deg, rgba(108,99,255,0.16), rgba(32,32,55,0.8));
+    }
+    .teaser-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 16px 0;
+    }
+    .teaser-icon {
+      font-size: 36px;
+    }
+    .teaser-label {
+      font-weight: 600;
+      font-size: 18px;
+      color: #EFEFFF;
+    }
+    .teaser-url {
+      font-family: monospace;
+      font-size: 12px;
+      background: rgba(0,0,0,0.5);
+      padding: 6px 14px;
+      border-radius: 36px;
+      letter-spacing: -0.2px;
+      color: #C2BCFF;
+    }
+    .teaser-action {
+      background: rgba(108,99,255,0.25);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .teaser-action a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .teaser-action:hover {
+      background: #6C63FF;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: #3E3E4A;
-    border-radius: 4px;
-  }
+    /* links panel */
+    .links-panel {
+      background: rgba(0,0,0,0.35);
+      border-radius: 24px;
+      padding: 20px 24px;
+      margin: 28px 0 12px;
+    }
+    .links-panel h4 {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      color: #A29DFF;
+    }
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    }
+    .link-label {
+      min-width: 100px;
+      font-weight: 500;
+    }
+    .real-link {
+      font-family: monospace;
+      font-size: 12px;
+      word-break: break-all;
+    }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #5E5E72;
-  }
-</style>
+    .footer {
+      padding: 48px 8%;
+      text-align: center;
+      border-top: 0.5px solid rgba(108,99,255,0.1);
+      font-size: 13px;
+      color: #6A6A88;
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(22px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar { transform: translateX(-100%); transition: 0.3s; }
+      .main { margin-left: 0; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .case-double { grid-template-columns: 1fr; }
+      .case-block { padding: 32px 28px; }
+    }
+    @media (max-width: 700px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 44px; }
+      .teaser-card { flex-direction: column; align-items: flex-start; padding: 20px; }
+      .teaser-left { padding: 0; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Sidebar Navigation -->
+<div class="bg-aura">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
 <div class="sidebar">
   <div>
-    <div class="logo">
-      <h1>LORRAINE NGWENYA</h1>
-      <p>Computer Science Student</p>
-    </div>
+    <div class="logo"><h1>LORRAINE NGWENYA</h1><p>Computer Science Student</p></div>
     <div class="nav-links">
-      <a href="#work" class="nav-link active">
-        <span class="nav-icon">⌘</span>
-        <span>Work</span>
-      </a>
-      <a href="#todo" class="nav-link">
-        <span class="nav-icon">◈</span>
-        <span>To-Do Case</span>
-      </a>
-      <a href="#music" class="nav-link">
-        <span class="nav-icon">♪</span>
-        <span>Music Case</span>
-      </a>
-      <a href="#website" class="nav-link">
-        <span class="nav-icon">◧</span>
-        <span>Website Case</span>
-      </a>
+      <a href="#work" class="nav-link active"><span class="nav-icon">⌘</span><span>Work</span></a>
+      <a href="#todo-case" class="nav-link"><span class="nav-icon">✓</span><span>To-Do Case</span></a>
+      <a href="#music-case" class="nav-link"><span class="nav-icon">♪</span><span>Music Case</span></a>
+      <a href="#web-case" class="nav-link"><span class="nav-icon">◧</span><span>Website Case</span></a>
     </div>
   </div>
+  <div class="sidebar-footer"><span><a href="docs/CV.pdf" class="nav-link" target="blank" >PEEK CV</a></span></div>
 </div>
 
-<!-- Main Content -->
 <div class="main">
-  
-  <!-- Hero -->
+  <!-- elegant marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>MAKE IT SIMPLE</span><span class="accent">✦</span><span>THEN MAKE IT BEAUTIFUL</span><span class="accent">✦</span><span>REPEAT</span><span class="accent">✦</span><span>DESIGN</span><span class="accent">✦</span><span>CODE</span><span class="accent">✦</span><span>ITERATE</span><span class="accent">✦</span>
+	  <span>MAKE IT SIMPLE</span><span class="accent">✦</span><span>THEN MAKE IT BEAUTIFUL</span><span class="accent">✦</span><span>REPEAT</span><span class="accent">✦</span><span>DESIGN</span><span class="accent">✦</span><span>CODE</span><span class="accent">✦</span><span>ITERATE</span><span class="accent">✦</span>
+    </div>
+  </div>
+
+  <!-- hero -->
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">About ME</div>
-      <h1>Usability & simplicity first.</h1>
-      <p>I design digital experiences that are intuitive, accessible, and human-centered. Currently studying computer scince with an interest in design & frontend development</p>
+    <div class="hero-grid">
+      <div>
+        <h1>Usability & simplicity first.</h1>
+        <p>I design digital experiences that are intuitive, accessible, and human-centered. Currently studying computer science with an interest in design & frontend development.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-row"><span class="stat-label">About ME</span><span class="stat-number">✦</span></div>
+        <div class="stat-row"><span class="stat-label">CS STUDENT + UX DESIGNER</div>
+        <div class="stat-row"><span class="stat-label">Design + Code</span><span class="stat-number">⌘</span></div>
+      </div>
     </div>
   </div>
 
-  <!-- Work Section -->
+  <!-- PROJECTS section (original wording) -->
   <section id="work">
-    <div class="section-header">
-      <div class="section-label">PROJECTS</div>
-      <div class="section-title">Selected work</div>
-    </div>
+    <div class="section-header"><div class="section-label">PROJECTS</div><div class="section-title">Selected work</div></div>
     <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img"><img src="images/to_do_thumbnail.png" onerror="this.src='https://placehold.co/600x420/1A1A2E/6C63FF?text=To-Do+App'"></div>
+        <div class="project-info"><h3>To-Do App</h3><div class="tags"><span class="tag">Wireframing</span><span class="tag">Layout</span><span class="tag">Figma</span></div><p>A task management app focused on reducing cognitive load and making task entry fast and intuitive.</p><a href="#todo-case" style="color:#B0AAFF; text-decoration:none;">View case study →</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><img src="images/MP_thumbnail.png" onerror="this.src='https://placehold.co/600x420/1A1A2E/6C63FF?text=Music+Player'"></div>
+        <div class="project-info"><h3>Music Player</h3><div class="tags"><span class="tag">Visual Design</span><span class="tag">Prototyping</span><span class="tag">Wireframing</span></div><p>A clean music player designed for one-handed use and quick access to playback controls.</p><a href="#music-case" style="color:#B0AAFF; text-decoration:none;">View case study →</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><img src="images/web_thumbnail.png" onerror="this.src='https://placehold.co/600x420/1A1A2E/6C63FF?text=Website+Design'"></div>
+        <div class="project-info"><h3>Website Design</h3><div class="tags"><span class="tag">Figma</span><span class="tag">Visual Design</span><span class="tag">Prototyping</span></div><p>A content-heavy website organized for better scannability and reduced cognitive load.</p><a href="#web-case" style="color:#B0AAFF; text-decoration:none;">View case study →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY VAULT: original wording -->
+  <section id="case-studies" style="padding-top: 0;">
+    <div class="case-container">
       
-      <div class="project-item">
-        <div class="project-image">
-          <div class="project-placeholder"><img class="project-placeholder" src="images/to_do_thumbnail.png" alt="Project screenshot"></div>
+      <!-- To-Do Case (original wording) -->
+      <div id="todo-case" class="case-block">
+        <div class="case-title">To-Do App</div>
+        <div class="case-sub">From cognitive overload to clarity</div>
+        <div class="case-double">
+          <div class="case-col"><p><strong>01 Problem</strong><br>Users forget tasks and struggle with complex apps.</p><p><strong>02 Research</strong><br>Existing apps are cluttered and unclear.</p><p><strong>03 Ideation</strong><br>Focused on simple vertical layout.</p><div><span class="ux-chip">Wireframing</span><span class="ux-chip">Layout</span><span class="ux-chip">Figma</span></div></div>
+          <div class="case-col"><p><strong>04 What Worked</strong><br>Clear and easy to use with color-coded tasks.</p><p><strong>05 Improvements</strong><br>Add reminders and usability testing.</p><p><strong>UX Laws Applied</strong><br>Hick's Law – reduced choices<br>Fitts's Law – large buttons<br>Gestalt – grouping tasks<br>Von Restorff – highlight actions<br>Jakob's Law – familiar UI<br>Cognitive Load – simple layout<br>Colour Psychology – task states<br>F & Z Pattern – readable flow</p></div>
         </div>
-        <div class="project-info">
-          <h3>To-Do App</h3>
-          <div class="project-tags">
-            <span class="tag">Wireframing</span>
-            <span class="tag">Layout</span>
-            <span class="tag">Figma</span>
-          </div>
-          <p>A task management app focused on reducing cognitive load and making task entry fast and intuitive.</p>
-          <a href="#todo" class="project-link">View case study →</a>
+        <div class="links-panel">
+          <h4>🔗 EXTERNAL LINKS</h4>
+          <div class="link-row"><span class="link-label">PROTOTYPE</span><span class="real-link">https://www.figma.com/proto/TO-DO-LIST</span><a href="https://www.figma.com/proto/47TfPBYvPiAT7BU0nPxqga/TO-DO-LIST?node-id=18-802&p=f&t=KZdoZjHGUM0nzz8f-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" style="color:#A59EFF;">↗</a></div>
+          <div class="link-row"><span class="link-label">WIREFRAME</span><span class="real-link">https://www.figma.com/design/TO-DO-LIST</span><a href="https://www.figma.com/proto/47TfPBYvPiAT7BU0nPxqga/TO-DO-LIST?node-id=10-1057&p=f&t=NZPdQnhvLGR9yMf1-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A9" target="_blank" style="color:#A59EFF;">↗</a></div>
         </div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-info">
-          <h3>Music Player</h3>
-          <div class="project-tags">
-            <span class="tag">Visual Design</span>
-            <span class="tag">Prototyping</span>
-            <span class="tag">Wireframing</span>
-          </div>
-          <p>A clean music player designed for one-handed use and quick access to playback controls.</p>
-          <a href="#music" class="project-link">View case study →</a>
-        </div>
-        <div class="project-image">
-          <div class="project-placeholder"><img class="project-placeholder" src="images/MP_thumbnail.png" alt="Project screenshot"></div>
+        <div class="teaser-card">
+          <div class="teaser-left"><div class="teaser-icon">📘</div><div class="teaser-label">Full case study</div></div>
+          <div class="teaser-action"><a href="docs/Case_Studies.pdf" target="_blank">View full case →</a></div>
         </div>
       </div>
 
-      <div class="project-item">
-        <div class="project-image">
-          <div class="project-placeholder"><img class="project-placeholder" src="images/web_thumbnail.png" alt="Project screenshot"></div>
+      <!-- Music Case -->
+      <div id="music-case" class="case-block">
+        <div class="case-title">Music Player</div>
+        <div class="case-sub">Clean controls for better listening</div>
+        <div class="case-double">
+          <div class="case-col"><p><strong>01 Problem</strong><br>Music apps can feel cluttered and hard to navigate.</p><p><strong>02 Research</strong><br>Users struggle to quickly find controls and navigate playlists.</p><p><strong>03 Ideation</strong><br>Focused on large controls and minimal layout.</p><div><span class="ux-chip">Visual Design</span><span class="ux-chip">Prototyping</span><span class="ux-chip">Wireframing</span></div></div>
+          <div class="case-col"><p><strong>04 What Worked</strong><br>Simple navigation and clear playback controls.</p><p><strong>05 Improvements</strong><br>Add search and playlist customization.</p><p><strong>UX Laws Applied</strong><br>Fitts's Law – large play buttons<br>Hick's Law – fewer options<br>Gestalt – grouped controls<br>Von Restorff – highlight play button</p></div>
         </div>
-        <div class="project-info">
-          <h3>Website Design</h3>
-          <div class="project-tags">
-            <span class="tag">Figma</span>
-            <span class="tag">Visual Design</span>
-            <span class="tag">Prototyping</span>
-          </div>
-          <p>A content-heavy website organized for better scannability and reduced cognitive load.</p>
-          <a href="#website" class="project-link">View case study →</a>
+        <div class="links-panel">
+          <h4>🎧 EXTERNAL LINKS</h4>
+          <div class="link-row"><span class="link-label">PROTOTYPE</span><span class="real-link">https://www.figma.com/proto/MUSIC-PLAYER</span><a href="https://www.figma.com/proto/KBFOCBEzXMmgHzZKozhG6q/Music-Player?node-id=15-47&p=f&t=Oudh41ifXsTQAxPO-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=15%3A47" target="_blank" style="color:#A59EFF;">↗</a></div>
+          <div class="link-row"><span class="link-label">WIREFRAME</span><span class="real-link">https://www.figma.com/design/MUSIC-PLAYER</span><a href="https://www.figma.com/proto/KBFOCBEzXMmgHzZKozhG6q/Music-Player?node-id=6-38&p=f&t=AUjGSgcZ4AsNtnIu-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2" target="_blank" style="color:#A59EFF;">↗</a></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-left"><div class="teaser-icon">📘</div><div class="teaser-label">Music deep dive</div></div>
+          <div class="teaser-action"><a href="docs/Case_Studies.pdf" target="_blank">View full case →</a></div>
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- TO-DO CASE STUDY -->
-  <section id="todo" class="case-study">
-    <div class="case-hero">
-      <div class="section-label">CASE STUDY</div>
-      <h2>To-Do App</h2>
-      <p style="color: #8E8EA8;">From cognitive overload to clarity</p>
-    </div>
-    <div class="case-content">
-      <div class="case-block">
-        <h3>01 Problem</h3>
-        <p>Users forget tasks and struggle with complex apps.</p>
-      </div>
-      <div class="case-block">
-        <h3>02 Research</h3>
-        <p>Existing apps are cluttered and unclear.</p>
-      </div>
-      <div class="case-block">
-        <h3>03 Ideation</h3>
-        <p>Focused on simple vertical layout.</p>
-      </div>
-      <div class="case-block">
-        <h3>04 Wireframes</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/to_do_wireframe.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>05 Prototype</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/to_do_prototype.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>06 Final</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/to_do_final.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>07 What Worked</h3>
-        <p>Clear and easy to use with color-coded tasks.</p>
-      </div>
-      <div class="case-block">
-        <h3>08 Improvements</h3>
-        <p>Add reminders and usability testing.</p>
-      </div>
-      <div class="case-block">
-        <h3>UX Laws Applied</h3>
-        <p>Hick's Law – reduced choices<br>Fitts's Law – large buttons<br>Gestalt – grouping tasks<br>Von Restorff – highlight actions<br>Jakob's Law – familiar UI<br>Cognitive Load – simple layout<br>Colour Psychology – task states<br>F & Z Pattern – readable flow</p>
+      <!-- Website -->
+      <div id="web-case" class="case-block">
+        <div class="case-title">Website Design</div>
+        <div class="case-sub">Structure that guides the eye</div>
+        <div class="case-double">
+          <div class="case-col"><p><strong>01 Problem</strong><br>Websites often overload users with too much content.</p><p><strong>02 Research</strong><br>Users scan content and ignore cluttered layouts.</p><p><strong>03 Ideation</strong><br>Focused on structured layout and spacing.</p><div><span class="ux-chip">Figma</span><span class="ux-chip">Visual Design</span><span class="ux-chip">Prototyping</span></div></div>
+          <div class="case-col"><p><strong>04 What Worked</strong><br>Clear hierarchy and easy navigation.</p><p><strong>05 Improvements</strong><br>Improve responsiveness and accessibility.</p><p><strong>UX Laws Applied</strong><br>F Pattern – layout scanning<br>Gestalt – grouping sections<br>Jakob's Law – familiar layout<br>Cognitive Load – reduced clutter</p></div>
+        </div>
+        <div class="links-panel">
+          <h4>🌐 EXTERNAL LINKS</h4>
+          <div class="link-row"><span class="link-label">PROTOTYPE</span><span class="real-link">https://www.figma.com/proto/WEBSITE</span><a href="https://www.figma.com/proto/UqZJe4pi6OQrlnnCNwssqS/Elegant_Curtains_Web_Design?node-id=4-72&p=f&t=pyVn6wHRiHBmV79p-1&scaling=scale-down&content-scaling=fixed&page-id=4%3A71&starting-point-node-id=4%3A72" target="_blank" style="color:#A59EFF;">↗</a></div>
+          <div class="link-row"><span class="link-label">WIREFRAME</span><span class="real-link">https://www.figma.com/design/WEBSITE</span><a href="https://www.figma.com/proto/UqZJe4pi6OQrlnnCNwssqS/Elegant_Curtains_Web_Design?node-id=2-61&p=f&t=wQhIhnqGZ7S5glmR-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" style="color:#A59EFF;">↗</a></div>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-left"><div class="teaser-icon">📘</div><div class="teaser-label">Website case vault</div></div>
+          <div class="teaser-action"><a href="docs/Case_Studies.pdf" target="_blank">View full case →</a></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MUSIC CASE STUDY -->
-  <section id="music" class="case-study">
-    <div class="case-hero">
-      <div class="section-label">CASE STUDY</div>
-      <h2>Music Player</h2>
-      <p style="color: #8E8EA8;">Clean controls for better listening</p>
-    </div>
-    <div class="case-content">
-      <div class="case-block">
-        <h3>01 Problem</h3>
-        <p>Music apps can feel cluttered and hard to navigate.</p>
-      </div>
-      <div class="case-block">
-        <h3>02 Research</h3>
-        <p>Users struggle to quickly find controls and navigate playlists.</p>
-      </div>
-      <div class="case-block">
-        <h3>03 Ideation</h3>
-        <p>Focused on large controls and minimal layout.</p>
-      </div>
-      <div class="case-block">
-        <h3>04 Wireframes</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/MP_wireframe.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>05 Prototype</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/MP_prototype.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>06 Final</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/MP_final.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>07 What Worked</h3>
-        <p>Simple navigation and clear playback controls.</p>
-      </div>
-      <div class="case-block">
-        <h3>08 Improvements</h3>
-        <p>Add search and playlist customization.</p>
-      </div>
-      <div class="case-block">
-        <h3>UX Laws Applied</h3>
-        <p>Fitts's Law – large play buttons<br>Hick's Law – fewer options<br>Gestalt – grouped controls<br>Von Restorff – highlight play button</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WEBSITE CASE STUDY -->
-  <section id="website" class="case-study">
-    <div class="case-hero">
-      <div class="section-label">CASE STUDY</div>
-      <h2>Website Design</h2>
-      <p style="color: #8E8EA8;">Structure that guides the eye</p>
-    </div>
-    <div class="case-content">
-      <div class="case-block">
-        <h3>01 Problem</h3>
-        <p>Websites often overload users with too much content.</p>
-      </div>
-      <div class="case-block">
-        <h3>02 Research</h3>
-        <p>Users scan content and ignore cluttered layouts.</p>
-      </div>
-      <div class="case-block">
-        <h3>03 Ideation</h3>
-        <p>Focused on structured layout and spacing.</p>
-      </div>
-      <div class="case-block">
-        <h3>04 Wireframes</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/Web_Wireframe.png" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>05 Prototype</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/web_prototype.png"alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>06 Final</h3>
-        <div class="case-image"><img class="project-placeholder" src="images/web_final.png"" alt="Case study image"></div>
-      </div>
-      <div class="case-block">
-        <h3>07 What Worked</h3>
-        <p>Clear hierarchy and easy navigation.</p>
-      </div>
-      <div class="case-block">
-        <h3>08 Improvements</h3>
-        <p>Improve responsiveness and accessibility.</p>
-      </div>
-      <div class="case-block">
-        <h3>UX Laws Applied</h3>
-        <p>F Pattern – layout scanning<br>Gestalt – grouping sections<br>Jakob's Law – familiar layout<br>Cognitive Load – reduced clutter</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>UX Portfolio</p>
-  </div>
-
+  <div class="footer"><p>UX Portfolio</p></div>
 </div>
 
 <script>
-  // Simple active nav highlight on scroll
-  const sections = document.querySelectorAll('section, .hero');
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // active nav highlight + smooth scroll
+  const sections = document.querySelectorAll('#work, #todo-case, #music-case, #web-case');
   const navLinks = document.querySelectorAll('.nav-link');
-
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (scrollY >= sectionTop - 200) {
-        current = section.getAttribute('id');
-      }
+    let cur = '';
+    const pos = window.scrollY + 200;
+    sections.forEach(sec => {
+      const top = sec.offsetTop, bottom = top + sec.offsetHeight;
+      if (pos >= top && pos < bottom) cur = sec.getAttribute('id');
     });
-
     navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
+      const href = link.getAttribute('href')?.substring(1);
+      if (href === cur) link.classList.add('active');
     });
   });
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('.nav-link, .project-link').forEach(link => {
-    link.addEventListener('click', function(e) {
+  document.querySelectorAll('.nav-link, .project-card a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
 </script>
-
 </body>
 </html>
